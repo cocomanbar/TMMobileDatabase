@@ -29,8 +29,11 @@ WCDB面向对象的封装运用
 
 /**
  单例方法创建数据库
+ 
  dbName 数据库的名称 如: @"Users.sqlite", 如果dbName = nil,则默认dbName=@"database.sqlite"
+ 
  dbPath 数据库的路径, 如果dbPath = nil, 则路径默认为NSDocumentDirectory
+ 
  */
 + (instancetype)shareDatabase;
 
