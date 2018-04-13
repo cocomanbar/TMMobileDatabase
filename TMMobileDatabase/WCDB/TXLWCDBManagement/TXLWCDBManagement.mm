@@ -153,13 +153,10 @@ static TXLWCDBManagement *wcdb = nil;
 + (void)createTablesForFirstInstallApp
 {
     //表1
-    if (![[TXLWCDBManagement shareDatabase] isTableExists:@"tomato"]) {
-        [[TXLWCDBManagement shareDatabase] createTableName:@"tomato" withClass:[tomato class]];
-    }
+    //不需要通过判断表是否存在再去创建，因为createTableName:withClass: 内部做有判断啦。
+    [[TXLWCDBManagement shareDatabase] createTableName:@"tomato" withClass:[tomato class]];
     //表2
-    if (![[TXLWCDBManagement shareDatabase] isTableExists:@"banana"]) {
-        [[TXLWCDBManagement shareDatabase] createTableName:@"banana" withClass:[banana class]];
-    }
+    [[TXLWCDBManagement shareDatabase] createTableName:@"banana" withClass:[banana class]];
     
     [[NSUserDefaults standardUserDefaults] setObject:@"1VWCDBVersion" forKey:TXLWCDBVersion];
     [[NSUserDefaults standardUserDefaults] synchronize];

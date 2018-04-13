@@ -15,6 +15,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *numberTextF;
 @property (weak, nonatomic) IBOutlet UITextField *statusTextF;
+@property (weak, nonatomic) IBOutlet UITextField *dateTextF;
 
 @end
 
@@ -35,13 +36,14 @@
 - (IBAction)createObjects:(UIButton *)sender {
     
     if (self.numberTextF.text == nil ||
-        self.statusTextF.text == nil) {
+        self.statusTextF.text == nil ||
+        self.dateTextF.text == nil) {
         return;
     }
     
     NSDictionary *dict = @{@"itemId":self.numberTextF.text,
                            @"itemObject":@"项目",
-                           @"createdTime":@"2018/09/09",
+                           @"createdTime":self.dateTextF.text,
                            @"number":[NSNumber numberWithInteger:[self.numberTextF.text intValue]],
                            @"tomatoTypeStatus":[NSNumber numberWithInteger:[self.statusTextF.text intValue]],
                            };
@@ -50,11 +52,40 @@
     [[TXLWCDBManagement shareDatabase] insertObjectWithTableName:@"tomato" withClassName:@"tomato" withModel:model];
 }
 
+//更新状态
 - (IBAction)deleteObjects:(UIButton *)sender {
     
     BOOL ret = [tomato updateStatusAllMovingToStop];
     NSLog(@"--->>%d",ret);
 }
+
+//搜索
+- (IBAction)searchData:(UIButton *)sender {
+    
+    NSArray *array = [tomato searchDatasWithSQL];
+    NSLog(@"--->>%@",array);
+}
+
+//删除
+- (IBAction)deleteButton:(UIButton *)sender {
+    
+    
+}
+
+//清空
+- (IBAction)cleanButton:(UIButton *)sender {
+    
+    BOOL ret = [tomato deleteAllDatasFromTable];
+    NSLog(@"--->>%d",ret);
+}
+
+//更新
+- (IBAction)updateButton:(UIButton *)sender {
+    
+    
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

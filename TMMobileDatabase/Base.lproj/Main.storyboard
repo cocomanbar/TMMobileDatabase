@@ -301,7 +301,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="byi-dW-8VI">
                                 <rect key="frame" x="16" y="157" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="删除符合条件"/>
+                                <state key="normal" title="更新状态"/>
                                 <connections>
                                     <action selector="deleteObjects:" destination="At2-5V-cCG" eventType="touchUpInside" id="Cl9-rn-GjN"/>
                                 </connections>
@@ -309,32 +309,51 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dEp-hl-UFI">
                                 <rect key="frame" x="16" y="222" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="查询"/>
+                                <connections>
+                                    <action selector="searchData:" destination="At2-5V-cCG" eventType="touchUpInside" id="Ggv-S5-KQf"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uoj-ut-CYg">
                                 <rect key="frame" x="16" y="296" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="删除"/>
+                                <connections>
+                                    <action selector="deleteButton:" destination="At2-5V-cCG" eventType="touchUpInside" id="Yov-da-4Wq"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ACK-Ko-MxM">
                                 <rect key="frame" x="16" y="375" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="清空"/>
+                                <connections>
+                                    <action selector="cleanButton:" destination="At2-5V-cCG" eventType="touchUpInside" id="Ufw-u0-k3G"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xNi-An-BUg">
                                 <rect key="frame" x="16" y="454" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="更新"/>
+                                <connections>
+                                    <action selector="updateButton:" destination="At2-5V-cCG" eventType="touchUpInside" id="AwW-Ib-9vl"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="number..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="luf-Xa-TcM">
-                                <rect key="frame" x="175" y="94" width="84" height="30"/>
+                                <rect key="frame" x="121" y="94" width="42" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0/1/2" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uic-Ne-KnI">
-                                <rect key="frame" x="267" y="94" width="66" height="30"/>
+                                <rect key="frame" x="181" y="94" width="45" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="yyyy-MM-dd" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rBl-tK-NKB">
+                                <rect key="frame" x="234" y="94" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -345,6 +364,7 @@
                         <viewLayoutGuide key="safeArea" id="rqx-eo-I8g"/>
                     </view>
                     <connections>
+                        <outlet property="dateTextF" destination="rBl-tK-NKB" id="raP-zy-obx"/>
                         <outlet property="numberTextF" destination="luf-Xa-TcM" id="qrT-8H-ZM7"/>
                         <outlet property="statusTextF" destination="uic-Ne-KnI" id="sgO-At-OEH"/>
                     </connections>

@@ -14,6 +14,10 @@
 
 + (BOOL)updateStatusAllMovingToStop;
 
++ (NSArray *)searchDatasWithSQL;
+
++ (BOOL)deleteAllDatasFromTable;
+
 @end
 
 /*
