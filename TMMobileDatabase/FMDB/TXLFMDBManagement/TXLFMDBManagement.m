@@ -16,6 +16,7 @@ NSString *const TXLWCDBVersion = @"TXLWCDBVersion";
 
 //建表需要的资源
 #import "orange.h"
+#import "TMLogsModel.h"
 
 // 数据库中常见的几种类型
 #define SQL_TEXT     @"TEXT"        //文本
@@ -102,7 +103,7 @@ static TXLFMDBManagement *jqdb = nil;
             case 1:
             {
                 // 做V1升级到V2版本的事..
-                
+                [self updateServerlocalDataBaseForV1];
                 
             }
             case 2:
@@ -132,11 +133,22 @@ static TXLFMDBManagement *jqdb = nil;
                                @"number":@"TEXT"};
         [[TXLFMDBManagement shareDatabase] jq_createTable:@"messageTable" dicOrModel:dict];
     }
+    //
     
     [[NSUserDefaults standardUserDefaults] setObject:@"1VDBVersion" forKey:TXLFMDBVersion];
     [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
+//升级数据库
++ (void)updateServerlocalDataBaseForV1
+{
+    if (![[TXLFMDBManagement shareDatabase] jq_isExistTable:@"logTable"]) {
+        [[TXLFMDBManagement shareDatabase] jq_createTable:@"logTable" dicOrModel:[TMLogsModel class]];
+    }
+    
+    [[NSUserDefaults standardUserDefaults] setObject:@"2VDBVersion" forKey:TXLFMDBVersion];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
 
 #pragma mark - 以model或字典创建表
 

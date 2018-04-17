@@ -8,6 +8,10 @@
 
 #import "AppDelegate.h"
 
+#import "TMAnalytics.h"
+#import "TMDatabaseTracker.h"
+#import "TMConsoleTracker.h"
+
 @interface AppDelegate ()
 
 @end
@@ -20,6 +24,11 @@
     
     [self createFMDBDataBaseFromInstallApp];
     [self createWCDBDataBaseFromInstallApp];
+    
+    [TMAnalytics registerTracker:[[TMDatabaseTracker alloc] init]];
+    [TMAnalytics registerTracker:[[TMConsoleTracker alloc] init]];
+    [TMAnalytics upLoadTrackersInfoFromLocalDataBase];
+    
     return YES;
 }
 

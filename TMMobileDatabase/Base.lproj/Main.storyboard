@@ -38,13 +38,25 @@
                                     <action selector="fmdb:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LUo-vw-8ja"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lzh-kV-THt">
+                                <rect key="frame" x="129" y="438" width="123" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <state key="normal" title="Analtics">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="AnalticsButtonClick:" destination="BYZ-38-t0r" eventType="touchUpInside" id="m82-Mi-gTk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Lzh-kV-THt" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="100" id="Egg-d0-ehN"/>
                             <constraint firstItem="ogI-UG-HNU" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ElM-bx-rVr"/>
                             <constraint firstItem="ogI-UG-HNU" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" constant="-100" id="GIp-pU-amH"/>
                             <constraint firstItem="TrM-nw-INC" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="HsQ-be-iQ3"/>
                             <constraint firstItem="TrM-nw-INC" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="lC2-7w-ZkW"/>
+                            <constraint firstItem="Lzh-kV-THt" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="prt-pM-AtT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -390,6 +402,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2gu-dj-h2U" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-382" y="117"/>
+        </scene>
+        <!--Analytics View Controller-->
+        <scene sceneID="t6O-hs-cfU">
+            <objects>
+                <viewController storyboardIdentifier="AnalyticsViewController" id="eth-dh-OSE" customClass="AnalyticsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Roe-ye-mYM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CG4-hj-hdX" customClass="SDCycleScrollView">
+                                <rect key="frame" x="45" y="146" width="285" height="183"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="42O-bA-ebA" customClass="SDCycleScrollView">
+                                <rect key="frame" x="45" y="357" width="285" height="163"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="iss-Ko-r1q"/>
+                    </view>
+                    <connections>
+                        <outlet property="cycleScrollView1" destination="CG4-hj-hdX" id="opp-L7-mHP"/>
+                        <outlet property="cycleScrollView2" destination="42O-bA-ebA" id="Mos-Ew-rOn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w3A-Qg-Zrh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-394.39999999999998" y="799.2503748125938"/>
+        </scene>
+        <!--Analytics Test View Controller-->
+        <scene sceneID="srq-cZ-Jau">
+            <objects>
+                <viewController storyboardIdentifier="AnalyticsTestViewController" id="LEk-LU-gbI" customClass="AnalyticsTestViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YhG-pt-6G2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="tEF-jO-fGX"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XLg-RX-m19" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="457" y="799"/>
         </scene>
     </scenes>
 </document>

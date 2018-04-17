@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "FMDBViewController.h"
 #import "WCDBViewController.h"
+#import "AnalyticsViewController.h"
 
 @interface ViewController ()
 
@@ -34,6 +35,14 @@
     viewController.title = @"WCDB";
     [self.navigationController  pushViewController:viewController animated:YES];
 }
+
+- (IBAction)AnalticsButtonClick:(UIButton *)sender {
+    
+    AnalyticsViewController *viewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AnalyticsViewController"];
+    viewController.title = @"Analytics";
+    [self.navigationController  pushViewController:viewController animated:YES];
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
