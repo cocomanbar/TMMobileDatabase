@@ -11,6 +11,9 @@
 #import "MJExtension.h"
 #import "tomato+wcdb.h"
 
+//主键自增测试
+#import "cat.h"
+
 @interface WCDBViewController111 ()
 
 @property (weak, nonatomic) IBOutlet UITextField *numberTextF;
@@ -82,7 +85,13 @@
 //更新
 - (IBAction)updateButton:(UIButton *)sender {
     
-    
+    for (int i = 0; i < 20; i ++) {
+        cat *model = [[cat alloc]init];
+        model.isAutoIncrement = YES;
+        model.name = [NSString stringWithFormat:@"%d",100 + i];
+        model.address = [NSString stringWithFormat:@"%d",200 + i];
+        [[TXLWCDBManagement shareDatabase] insertObjectWithTableName:@"cat" withClassName:@"cat" withModel:model];
+    }
     
 }
 

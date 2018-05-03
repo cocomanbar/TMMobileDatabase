@@ -11,6 +11,7 @@
 
 #import "banana.h"
 #import "tomato.h"
+#import "cat.h"
 
 @interface TXLWCDBManagement ()
 
@@ -126,7 +127,7 @@ static TXLWCDBManagement *wcdb = nil;
 + (void)updateWCDB
 {
     NSString *version = [[NSUserDefaults standardUserDefaults] objectForKey:TXLWCDBVersion];
-    if (!version || version.length <= 0) {
+    if (version) {
         [self createTablesForFirstInstallApp];
     }else{
         NSInteger ver = [[[NSUserDefaults standardUserDefaults] objectForKey:TXLWCDBVersion] integerValue];
@@ -157,6 +158,8 @@ static TXLWCDBManagement *wcdb = nil;
     [[TXLWCDBManagement shareDatabase] createTableName:@"tomato" withClass:[tomato class]];
     //表2
     [[TXLWCDBManagement shareDatabase] createTableName:@"banana" withClass:[banana class]];
+    //表3
+    [[TXLWCDBManagement shareDatabase] createTableName:@"cat" withClass:[cat class]];
     
     [[NSUserDefaults standardUserDefaults] setObject:@"1VWCDBVersion" forKey:TXLWCDBVersion];
     [[NSUserDefaults standardUserDefaults] synchronize];
