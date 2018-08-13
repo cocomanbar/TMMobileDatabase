@@ -10,8 +10,8 @@
 
 @interface cat : NSObject
 
-@property (nonatomic, strong)NSString *name;
-@property (nonatomic, strong)NSString *address;
+@property (nonatomic, copy)NSString *name;
+@property (nonatomic, copy)NSString *address;
 
 //自定义自增主键
 @property (nonatomic, assign)NSInteger privateId;

@@ -16,9 +16,9 @@ typedef NS_ENUM(NSInteger, tomatoType){
 
 @interface tomato : NSObject
 
-@property (strong, nonatomic) NSString *itemId;
-@property (strong, nonatomic) NSString *itemObject;
-@property (strong, nonatomic) NSString *createdTime;
+@property (copy, nonatomic) NSString *itemId;
+@property (copy, nonatomic) NSString *itemObject;
+@property (copy, nonatomic) NSString *createdTime;
 @property (nonatomic, assign) NSInteger number;
 
 @property (nonatomic, assign)tomatoType tomatoTypeStatus;

@@ -10,9 +10,12 @@
 
 @interface orange : NSObject
 
-@property (nonatomic, strong)NSString *name;
-@property (nonatomic, strong)NSString *addressss;
-@property (nonatomic, strong)NSString *proDate;
+@property (nonatomic, copy)NSString *name;
+@property (nonatomic, copy)NSString *addressss;
+@property (nonatomic, copy)NSString *proDate;
 @property (nonatomic, assign)int number;
+
+/* 数据库升级新字段 - 第一次运行时请屏蔽 */
+@property (nonatomic, copy)NSString *descipt;
 
 @end

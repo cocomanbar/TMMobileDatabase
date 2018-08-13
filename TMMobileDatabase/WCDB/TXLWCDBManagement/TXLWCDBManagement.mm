@@ -130,7 +130,7 @@ static TXLWCDBManagement *wcdb = nil;
     if (version) {
         [self createTablesForFirstInstallApp];
     }else{
-        NSInteger ver = [[[NSUserDefaults standardUserDefaults] objectForKey:TXLWCDBVersion] integerValue];
+        NSInteger ver = [version integerValue];
         switch (ver) {
             case 1:
             {
@@ -163,6 +163,10 @@ static TXLWCDBManagement *wcdb = nil;
     
     [[NSUserDefaults standardUserDefaults] setObject:@"1VWCDBVersion" forKey:TXLWCDBVersion];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    /* [很重要] */
+    /* 再次调用本身继续升级数据库 - 防止第一次安装后else情况 */
+    [TXLWCDBManagement updateWCDB];
 }
 
 #pragma mark - 检查表是否存在

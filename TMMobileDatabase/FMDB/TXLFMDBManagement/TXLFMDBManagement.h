@@ -119,7 +119,7 @@ extern NSString *const TXLWCDBVersion;
  增加新字段, 在建表后还想新增字段,可以在原建表model或新model中新增对应属性,然后传入即可新增该字段,该操作已在事务中执行
  
  @param tableName 表的名称
- @param parameters 如果传Model:数据库新增字段为建表时model所没有的属性,如果传dictionary格式为@{@"newname":@"TEXT"}
+ @param parameters 如果传Model:数据库新增字段为建表时model所有的属性,如果传dictionary格式为@{@"newname":@"TEXT"}
  @param nameArr 不允许生成字段的属性名的数组
  @return 是否成功
  */

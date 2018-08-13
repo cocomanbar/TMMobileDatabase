@@ -95,20 +95,27 @@ static TXLFMDBManagement *jqdb = nil;
 #pragma mark - 升级数据库
 
 + (void)updateDB{
-    if (![[NSUserDefaults standardUserDefaults] objectForKey:TXLFMDBVersion]) {
+    NSString *FMDBVersion = [[NSUserDefaults standardUserDefaults] objectForKey:TXLFMDBVersion];
+    if (!FMDBVersion || FMDBVersion.length <= 0) {
         [self createTablesForFirstInstallApp];
     }else{
-        NSInteger ver = [[[NSUserDefaults standardUserDefaults] objectForKey:TXLFMDBVersion] integerValue];
+        NSInteger ver = [FMDBVersion integerValue];
         switch (ver) {
             case 1:
             {
-                // 做V1升级到V2版本的事..
+                // 做V1升级到V2版本的事..测试加表
                 [self updateServerlocalDataBaseForV1];
                 
             }
             case 2:
             {
-                // 做V2升级到V3版本的事..
+                // 做V2升级到V3版本的事..测试加字段
+                [self updateServerlocalDataBaseForV2];
+                
+            }
+            case 3:
+            {
+                // 做V3升级到V4版本的事..
                 
                 
             }
@@ -119,13 +126,14 @@ static TXLFMDBManagement *jqdb = nil;
     }
 }
 
+/* 第一次安装 */
 + (void)createTablesForFirstInstallApp{
     
     //表1
     if (![[TXLFMDBManagement shareDatabase] jq_isExistTable:@"orangeTable"]) {
         [[TXLFMDBManagement shareDatabase] jq_createTable:@"orangeTable" dicOrModel:[orange class]];
     }
-    //表3
+    //表2
     if (![[TXLFMDBManagement shareDatabase] jq_isExistTable:@"messageTable"]) {
         NSDictionary *dict = @{@"name":@"TEXT",
                                @"addressss":@"TEXT",
@@ -137,9 +145,13 @@ static TXLFMDBManagement *jqdb = nil;
     
     [[NSUserDefaults standardUserDefaults] setObject:@"1VDBVersion" forKey:TXLFMDBVersion];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    /* [很重要] */
+    /* 再次调用本身继续升级数据库 - 防止第一次安装后else情况 */
+    [TXLFMDBManagement updateDB];
 }
 
-//升级数据库
+//升级数据库 - 加一个logTable表
 + (void)updateServerlocalDataBaseForV1
 {
     if (![[TXLFMDBManagement shareDatabase] jq_isExistTable:@"logTable"]) {
@@ -148,6 +160,20 @@ static TXLFMDBManagement *jqdb = nil;
     
     [[NSUserDefaults standardUserDefaults] setObject:@"2VDBVersion" forKey:TXLFMDBVersion];
     [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+//升级数据库 - 加一个orangeTable表 + 加一个字段
++ (void)updateServerlocalDataBaseForV2{
+    
+    if (![[TXLFMDBManagement shareDatabase] jq_isExistTable:@"orangeTable"]) {
+        [[TXLFMDBManagement shareDatabase] jq_createTable:@"orangeTable" dicOrModel:[orange class]];
+    }
+    
+    BOOL ret = [[TXLFMDBManagement shareDatabase] jq_alterTable:@"orangeTable" dicOrModel:[orange class]];
+    if (ret) {
+        [[NSUserDefaults standardUserDefaults] setObject:@"3VDBVersion" forKey:TXLFMDBVersion];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
 }
 
 #pragma mark - 以model或字典创建表
