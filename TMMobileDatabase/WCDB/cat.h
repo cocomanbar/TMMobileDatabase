@@ -15,6 +15,7 @@
 
 //自定义自增主键
 @property (nonatomic, assign)NSInteger privateId;
+//需要自增主键时，一定要写上这个字段。
 @property(nonatomic, assign) BOOL isAutoIncrement;
 
 @end

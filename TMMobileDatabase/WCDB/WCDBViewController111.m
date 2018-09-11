@@ -85,14 +85,13 @@
 //更新
 - (IBAction)updateButton:(UIButton *)sender {
     
-    for (int i = 0; i < 20; i ++) {
+    for (int i = 0; i < 5; i ++) {
         cat *model = [[cat alloc]init];
         model.isAutoIncrement = YES;
         model.name = [NSString stringWithFormat:@"%d",100 + i];
         model.address = [NSString stringWithFormat:@"%d",200 + i];
         [[TXLWCDBManagement shareDatabase] insertObjectWithTableName:@"cat" withClassName:@"cat" withModel:model];
     }
-    
 }
 
 

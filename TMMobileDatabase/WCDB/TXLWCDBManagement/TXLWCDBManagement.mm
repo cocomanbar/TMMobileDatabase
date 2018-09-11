@@ -127,7 +127,7 @@ static TXLWCDBManagement *wcdb = nil;
 + (void)updateWCDB
 {
     NSString *version = [[NSUserDefaults standardUserDefaults] objectForKey:TXLWCDBVersion];
-    if (version) {
+    if (!version) {
         [self createTablesForFirstInstallApp];
     }else{
         NSInteger ver = [version integerValue];

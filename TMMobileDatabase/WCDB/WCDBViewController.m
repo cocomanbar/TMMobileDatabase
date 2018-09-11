@@ -8,6 +8,7 @@
 
 #import "WCDBViewController.h"
 #import "WCDBViewController111.h"
+#import "WCDBViewController222.h"
 
 #import "banana.h"
 
@@ -32,6 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSLog(@"-->TXLWCDBCachePath---<< %@",TXLWCDBCachePath);
 }
 
 
@@ -84,7 +86,6 @@
     if (ret)NSLog(@"--->清空表了");
 }
 
-
 - (IBAction)getFilesSize:(UIButton *)sender {
     
     int count = [[TXLWCDBManagement shareDatabase] getAllTableFilesSize];
@@ -104,6 +105,11 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (IBAction)searchIntwoTable:(UIButton *)sender {
+    WCDBViewController222 *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"WCDBViewController222"];
+    vc.title = @"扩展";
+    [self.navigationController pushViewController:vc animated:YES];
+}
 
 
 - (void)didReceiveMemoryWarning {
